@@ -105,7 +105,9 @@ public class SecurityApplication {
 
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("googleMap")));
 
-            driver.navigate().refresh();
+            Thread.sleep(500);
+
+            driver.get(driver.getCurrentUrl());
 
             WebElement map = driver.findElement(By.className("googleMap"));
             Actions actions = new Actions(driver);
@@ -117,7 +119,7 @@ public class SecurityApplication {
             WebElement returnToHome = driver.findElement(By.className("return-btn"));
             returnToHome.click();
 
-            Thread.sleep(500);
+            Thread.sleep(5000);
 
             System.out.println("test ok");
         } catch (Exception e) {
