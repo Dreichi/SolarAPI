@@ -1,5 +1,7 @@
-package com.alibou.security.user;
+package com.alibou.security;
 
+import com.alibou.security.user.Role;
+import com.alibou.security.user.User;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

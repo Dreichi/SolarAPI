@@ -1,13 +1,14 @@
-package com.alibou.security.user;
+package com.alibou.security;
 
+import com.alibou.security.user.Role;
+import com.alibou.security.user.User;
+import com.alibou.security.user.UserRepository;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ExtendWith(SpringExtension.class)
 @DataJpaTest
 public class UserTestTI {
 
@@ -24,7 +25,7 @@ public class UserTestTI {
                 .build();
         userRepository.save(user);
 
-        User foundUser = userRepository.findByEmail("testuser@example.com").get();
+        User foundUser = userRepository.findByEmail("testuser@example.com").orElse(null);
         assertThat(foundUser).isNotNull();
         assertThat(foundUser.getUsername()).isEqualTo("testuser");
     }
